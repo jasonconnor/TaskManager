@@ -6,8 +6,8 @@ export async function getAllTasks() {
   return tasks
 }
 
-export async function createTask(title, description) {
-  const task = new TaskModel({title, description})
+export async function createTask(title, description, dueBy) {
+  const task = new TaskModel({title, description, dueBy})
   const result = await task.save()
 
   return result

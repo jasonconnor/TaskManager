@@ -1,13 +1,11 @@
 import { useRef } from 'react'
 
-export function TaskForm() {
+export function TaskForm({ setNotificationMessage }) {
   const titleRef = useRef()
   const descriptionRef = useRef()
-  const dueDateRef = useRef()
+  const dueByRef = useRef()
 
   async function createTask(task) {
-    console.log(task)
-
     const response = await fetch('http://localhost:4000/tasks', {
       method: 'POST',
       headers: {
@@ -18,19 +16,31 @@ export function TaskForm() {
 
     const data = await response.json()
 
-    console.log(data)
+    return data
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
 
     const title = titleRef.current.value
     const description = descriptionRef.current.value
-    const dueDate = dueDateRef.current.value
+    const dueBy = dueByRef.current.value
 
-    const task = {title, description, dueDate}
+    const task = {title, description, dueBy}
 
-    return createTask(task)
+    try {
+      const result = await createTask(task)
+
+      console.log(result)
+      setNotificationMessage('Task created successfully!')
+    }
+
+    catch (error) {
+      console.error(error)
+      setNotificationMessage('Something went wrong!')
+    }
+
+    
   }
 
   return (
@@ -45,7 +55,7 @@ export function TaskForm() {
         <textarea ref={descriptionRef}></textarea>
 
         <label>Due By</label>
-        <input type="date" ref={dueDateRef} />
+        <input type="datetime-local" ref={dueByRef} />
 
         <button>Create</button>
       </form>

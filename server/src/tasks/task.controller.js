@@ -16,9 +16,9 @@ export async function find(request, response) {
 
 export async function create(request, response) {
   try {
-    const { title, description, dueDate } = request.body
+    const { title, description, dueBy } = request.body
 
-    const task = await createTask(title, description)
+    const task = await createTask(title, description, dueBy)
 
     return response.status(201).json(task)
   }

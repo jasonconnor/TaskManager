@@ -24,6 +24,7 @@ export function TaskList() {
           <div key={task.id}>
             <h3>{task.title}</h3>
             <p>{task.description}</p>
+            <p>{task.dueBy}</p>
           </div>
         ))}
       </div>
