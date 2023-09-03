@@ -1,0 +1,66 @@
+/* Task List */
+.taskListWrapper {
+
+}
+
+.taskListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+}
+
+.taskListItem {
+  border: 2px solid gray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px 0;
+}
+
+.taskListItem:hover {
+  border-color: black;
+}
+
+.taskListItem:hover .taskItemOptions {
+  display: flex;
+}
+
+.taskItemDetails {
+  background: turquoise;
+}
+
+.taskItemOptions {
+  align-items: center;
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.taskItemButton {
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  color: gray;
+  font-size: 24px;
+  padding: 10px;
+  margin: 0 10px;
+}
+
+
+
+.taskItemButton:hover {
+  border-color: black;
+  color: black;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  border-color: red;
+  color: red;
+}
+
+
+/* Task Form */

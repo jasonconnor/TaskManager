@@ -1,5 +1,7 @@
 import { useRef } from 'react'
 
+import './style.css'
+
 export function TaskForm({ setNotificationMessage }) {
   const titleRef = useRef()
   const descriptionRef = useRef()
@@ -39,23 +41,27 @@ export function TaskForm({ setNotificationMessage }) {
       console.error(error)
       setNotificationMessage('Something went wrong!')
     }
-
-    
   }
 
   return (
     <div>
       <h2>Create Task</h2>
 
-      <form onSubmit={handleSubmit}>
-        <label>Title</label>
-        <input ref={titleRef} type="text" />
+      <form onSubmit={handleSubmit} className='taskForm'>
+        <div className='taskFormGroup'>
+          <label>Title</label>
+          <input ref={titleRef} type='text' />
+        </div>
 
-        <label>Description</label>
-        <textarea ref={descriptionRef}></textarea>
+        <div className='taskFormGroup'>
+          <label>Description</label>
+          <textarea ref={descriptionRef}></textarea>
+        </div>
 
-        <label>Due By</label>
-        <input type="datetime-local" ref={dueByRef} />
+        <div className='taskFormGroup'>
+          <label>Due By</label>
+          <input type='datetime-local' ref={dueByRef} />
+        </div>
 
         <button>Create</button>
       </form>

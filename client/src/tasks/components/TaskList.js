@@ -1,4 +1,8 @@
+import { faPencil, faX } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
+
+import './style.css'
 
 export function TaskList() {
   const [tasks, setTasks] = useState([])
@@ -16,15 +20,22 @@ export function TaskList() {
   }, [])
 
   return (
-    <div>
+    <div className='taskListWrapper'>
       <h2>Tasks</h2>
 
-      <div>
+      <div className='taskListContainer'>
         {tasks.map(task => (
-          <div key={task.id}>
-            <h3>{task.title}</h3>
-            <p>{task.description}</p>
-            <p>{task.dueBy}</p>
+          <div key={task.id} className='taskListItem'>
+            <div className='taskItemDetails'>
+              <h3>{task.title}</h3>
+              <p>{task.description}</p>
+              <p>{task.dueBy}</p>
+            </div>
+
+            <div className='taskItemOptions'>
+              <FontAwesomeIcon icon={faPencil} className='taskItemButton' />
+              <FontAwesomeIcon icon={faX} className='taskItemButton deleteButton' />
+            </div>
           </div>
         ))}
       </div>

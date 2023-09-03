@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 
-import { TaskForm } from './tasks/components/TaskForm'
-import { TaskList } from './tasks/components/TaskList'
+import './style.css'
+
+import { TaskForm } from '../tasks/components/TaskForm'
+import { TaskList } from '../tasks/components/TaskList'
 
 export function App() {
   const [showNotification, setShowNotification] = useState(false)
