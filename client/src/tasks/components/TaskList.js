@@ -2,7 +2,7 @@ import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 
-import { getTasks } from '../taskServices'
+import { getTasks, deleteTask } from '../taskServices'
 
 import './style.css'
 
