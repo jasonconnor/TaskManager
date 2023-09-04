@@ -2,29 +2,41 @@ import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 
+import { getTasks } from '../taskServices'
+
 import './style.css'
 
 export function TaskList() {
   const [tasks, setTasks] = useState([])
 
-  async function getTasks() {
-    const response = await fetch('http://localhost:4000/tasks')
-    const data = await response.json()
+  // ToDo: Implement Error Notification on Catch
+  async function loadTasks() {
+    try {
+      const tasks = await getTasks()
 
-    setTasks(data)
+      setTasks(tasks)
+    }
+
+    catch (error) {
+      console.error(error)
+    }
   }
 
+  // ToDo: Implement Success Notification on Try
+  // ToDo: Implement Error Notification on Catch
   async function handleDeleteButtonClick(taskId) {
-    const response = await fetch(`http://localhost:4000/tasks/${taskId}`, {
-      method: 'DELETE',
-    })
-    const data = await response.json()
+    try {
+      await deleteTask(taskId)
+      await loadTasks()
+    }
 
-    getTasks()
+    catch (error) {
+      console.error(error)
+    }
   }
 
   useEffect(() => {
-    getTasks()
+    loadTasks()
   }, [])
 
   return (
