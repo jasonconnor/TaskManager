@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 
-
 import { useNotification } from '../notification/NotificationContext'
 import { getTasks, deleteTask } from './taskServices'
 
@@ -11,11 +10,7 @@ import './style.css'
 export function TaskList() {
   const [tasks, setTasks] = useState([])
 
-  const {
-    showNotification,
-    setErrorNotification,
-    setSuccessNotification
-  } = useNotification()
+  const { setErrorNotification, setSuccessNotification } = useNotification()
 
   async function loadTasks() {
     try {

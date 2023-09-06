@@ -1,15 +1,24 @@
 .notification {
   background: lightgrey;
   border-left: darkgray 3px solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.notificationMessage {
+  font-size: 18px;
+  padding: 5px 10px;
 }
 
 .notification-success {
   background: lightgreen;
   border-left: green 3px solid;
+  color: green;
 }
 
 .notification-error {
   background: lightcoral;
   border-left: red 3px solid;
+  color: red;
 }

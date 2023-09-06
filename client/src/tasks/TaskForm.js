@@ -35,7 +35,7 @@ export function TaskForm() {
   }
 
   return (
-    <div>
+    <div className='taskFormWrapper'>
       <h2>Create Task</h2>
 
       <form 

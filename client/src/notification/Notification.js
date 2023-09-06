@@ -7,7 +7,7 @@ export function Notification() {
 
   return (
     <div className={'notification notification-' + notificationType}>
-      { notificationMessage }
+      <span className='notificationMessage'>{ notificationMessage }</span>
 
       <button onClick={closeNotification}>close</button>
     </div>

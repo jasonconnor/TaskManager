@@ -6,8 +6,7 @@ import { useNotification } from '../notification/NotificationContext'
 export function Tasks() {
   const { showNotification } = useNotification()
   return (
-    <div>
-      <h1>To-Do App</h1>
+    <div className='taskWrapper'>
 
       {showNotification && <Notification />}
 
