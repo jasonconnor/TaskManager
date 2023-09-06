@@ -1,7 +1,5 @@
 import { useRef } from 'react'
 
-import { Notification } from '../notification/Notification'
-
 import { createTask } from './taskServices'
 import { useNotification } from '../notification/NotificationContext'
 
@@ -12,7 +10,7 @@ export function TaskForm() {
   const descriptionRef = useRef()
   const dueByRef = useRef()
 
-  const { showNotification, setSuccessNotification, setErrorNotification } = useNotification()
+  const { setSuccessNotification, setErrorNotification } = useNotification()
 
   async function handleSubmit(event) {
     const title = titleRef.current.value
@@ -39,8 +37,6 @@ export function TaskForm() {
   return (
     <div>
       <h2>Create Task</h2>
-
-      {showNotification && <Notification />}
 
       <form 
         onSubmit={handleSubmit} 

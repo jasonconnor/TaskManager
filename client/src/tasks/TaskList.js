@@ -3,7 +3,6 @@ import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 
 
-import { Notification } from '../notification/Notification'
 import { useNotification } from '../notification/NotificationContext'
 import { getTasks, deleteTask } from './taskServices'
 
@@ -54,10 +53,6 @@ export function TaskList() {
   return (
     <div className='taskListWrapper'>
       <h2>Tasks</h2>
-
-      {showNotification && (
-        <Notification />
-      )}
 
       <div className='taskListContainer'>
         {tasks.map(task => (
