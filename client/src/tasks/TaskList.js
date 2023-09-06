@@ -1,15 +1,23 @@
-import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 
-import { getTasks, deleteTask } from '../taskServices'
+
+import { Notification } from '../notification/Notification'
+import { useNotification } from '../notification/NotificationContext'
+import { getTasks, deleteTask } from './taskServices'
 
 import './style.css'
 
 export function TaskList() {
   const [tasks, setTasks] = useState([])
 
-  // ToDo: Implement Error Notification on Catch
+  const {
+    showNotification,
+    setErrorNotification,
+    setSuccessNotification
+  } = useNotification()
+
   async function loadTasks() {
     try {
       const tasks = await getTasks()
@@ -19,19 +27,23 @@ export function TaskList() {
 
     catch (error) {
       console.error(error)
+
+      setErrorNotification('Error loading tasks')
     }
   }
 
-  // ToDo: Implement Success Notification on Try
-  // ToDo: Implement Error Notification on Catch
   async function handleDeleteButtonClick(taskId) {
     try {
       await deleteTask(taskId)
       await loadTasks()
+
+      setSuccessNotification('Task deleted!')
     }
 
     catch (error) {
       console.error(error)
+
+      setErrorNotification('Error deleting task!')
     }
   }
 
@@ -42,6 +54,10 @@ export function TaskList() {
   return (
     <div className='taskListWrapper'>
       <h2>Tasks</h2>
+
+      {showNotification && (
+        <Notification />
+      )}
 
       <div className='taskListContainer'>
         {tasks.map(task => (

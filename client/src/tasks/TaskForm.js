@@ -1,13 +1,18 @@
 import { useRef } from 'react'
 
-import { createTask } from '../taskServices'
+import { Notification } from '../notification/Notification'
+
+import { createTask } from './taskServices'
+import { useNotification } from '../notification/NotificationContext'
 
 import './style.css'
 
-export function TaskForm({ setNotificationMessage }) {
+export function TaskForm() {
   const titleRef = useRef()
   const descriptionRef = useRef()
   const dueByRef = useRef()
+
+  const { showNotification, setSuccessNotification, setErrorNotification } = useNotification()
 
   async function handleSubmit(event) {
     const title = titleRef.current.value
@@ -21,18 +26,21 @@ export function TaskForm({ setNotificationMessage }) {
     try {
       const result = await createTask(task)
 
-      setNotificationMessage('Task created successfully!')
+      setSuccessNotification('Task created successfully.')
     }
 
     catch (error) {
       console.error(error)
-      setNotificationMessage('Something went wrong!')
+
+      setErrorNotification('Failed to create new task.')
     }
   }
 
   return (
     <div>
       <h2>Create Task</h2>
+
+      {showNotification && <Notification />}
 
       <form 
         onSubmit={handleSubmit} 
