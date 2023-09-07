@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPencil, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 
 import { useNotification } from '../notification/NotificationContext'
@@ -46,30 +44,30 @@ export function TaskList() {
   }, [])
 
   return (
-    <div className='taskListWrapper'>
-      <h2>Tasks</h2>
-
-      <div className='taskListContainer'>
-        {tasks.map(task => (
-          <div key={task._id} className='taskListItem'>
-            <div className='taskItemDetails'>
-              <h3>{task.title}</h3>
-              <p>{task.description}</p>
-              <p>{task.dueBy}</p>
-            </div>
-
-            <div className='taskItemOptions'>
-              <FontAwesomeIcon icon={faPencil} className='taskItemButton' />
-              
-              <FontAwesomeIcon 
-                icon={faTrash}
-                className='taskItemButton deleteButton'
-                onClick={() => handleDeleteButtonClick(task._id)}
-              />
-            </div>
+    <div className='taskList'>
+      {tasks.map((task) => (
+        <div key={task._id} className='taskItem'>
+          <div className='taskItemHeader'>
+            <h2 className='taskItemTitle'>{task.title}</h2>
           </div>
-        ))}
-      </div>
+
+          <div className='taskItemContent'>
+            <p>{task.description}</p>
+            <p>{task.dueDate}</p>
+          </div>
+
+          <div className='taskItemFooter'>
+            <button className='taskItemButton button-complete'>complete</button>
+            <button className='taskItemButton button-edit'>edit</button>
+            <button
+              className='taskItemButton button-delete'
+              onClick={() => handleDeleteButtonClick(task._id)}
+            >
+              delete
+            </button>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
