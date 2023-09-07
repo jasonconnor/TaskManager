@@ -1,7 +1,18 @@
-.header {
+.headerContainer {
   background: navy;
-  color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-bottom: 40px;
   padding: 10px;
+}
+
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 900px;
 }

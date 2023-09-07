@@ -1,11 +1,15 @@
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import './style.css'
 
 export function Header() {
   return (
-    <header className='header'>
-      <div className=''>
+    <header className='headerContainer'>
+      <div className='headerWrapper'>
         <h1>TaskManager</h1>
 
+        <FontAwesomeIcon icon={faPlus} />
       </div>
     </header>
   )
