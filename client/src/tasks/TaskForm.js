@@ -43,17 +43,17 @@ export function TaskForm() {
         className='taskForm'
       >
         <div className='taskFormGroup'>
-          <label>Title</label>
+          <label className='taskFormLabel'>Title:</label>
           <input ref={titleRef} type='text' />
         </div>
 
         <div className='taskFormGroup'>
-          <label>Description</label>
+          <label className='taskFormLabel'>Description:</label>
           <textarea ref={descriptionRef}></textarea>
         </div>
 
         <div className='taskFormGroup'>
-          <label>Due By</label>
+          <label className='taskFormLabel'>Due By:</label>
           <input type='datetime-local' ref={dueByRef} />
         </div>
 
