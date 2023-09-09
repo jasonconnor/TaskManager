@@ -1,8 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './style.css'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export function Modal({ children, closeModal }) {
+import { useModal } from './ModalContext'
+
+import './style.css'
+
+export function Modal({ children }) {
+  const { closeModal } = useModal()
+  
   return (
     <div className='modalOverlay'>
       <div className='modalContainer'>

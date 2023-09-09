@@ -1,15 +1,15 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Modal } from '../modal/Modal'
 import { TaskForm } from '../tasks/TaskForm'
+import { useModal } from '../modal/ModalContext'
 
 import './style.css'
 
 export function Header() {
-  const [showModal, setShowModal] = useState(false)
+  const { showModal, openModal, } = useModal()
 
   return (
     <header className='headerContainer'>
@@ -19,12 +19,12 @@ export function Header() {
         <FontAwesomeIcon 
           icon={faPlus} 
           className='headerButton'
-          onClick={() => setShowModal(true)}  
+          onClick={openModal}  
         />
       </div>
 
       {showModal && createPortal(
-        <Modal closeModal={() => setShowModal(false)}>
+        <Modal>
           <TaskForm />
         </Modal>,
         document.querySelector('#modal')
