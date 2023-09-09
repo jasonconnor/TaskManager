@@ -24,10 +24,11 @@ export function Header() {
       </div>
 
       {showModal && createPortal(
-      <Modal closeModal={() => setShowModal(false)}>
-        <TaskForm />
-      </Modal>,
-      document.querySelector('#modal'))}
+        <Modal closeModal={() => setShowModal(false)}>
+          <TaskForm />
+        </Modal>,
+        document.querySelector('#modal')
+      )}
     </header>
   )
 }

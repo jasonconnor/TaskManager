@@ -1,19 +1,19 @@
 import { useTasks } from '../tasks/TasksContext'
 import { deleteTask } from './taskServices'
+import { Notification } from '../notification/Notification'
 import { useNotification } from '../notification/NotificationContext'
 
 import './style.css'
 
 export function TaskList() {
   const { tasks, loadTasks } = useTasks()
-  const { setErrorNotification, setSuccessNotification } = useNotification()
+  const { showNotification, setErrorNotification, setSuccessNotification } = useNotification()
 
   function formatDate(date) {
     const dateObj = new Date(date)
 
     return `${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getFullYear()} - ${dateObj.getHours() % 12}:${dateObj.getMinutes()}`
   }
-
 
   async function handleDeleteButtonClick(taskId) {
     try {
@@ -32,6 +32,9 @@ export function TaskList() {
 
   return (
     <div className='taskList'>
+
+      { showNotification && <Notification />}
+
       {tasks.map((task) => (
         <div key={task._id} className='taskItem'>
           <div className='taskItemHeader'>
