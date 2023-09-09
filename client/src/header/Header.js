@@ -9,7 +9,7 @@ export function Header() {
       <div className='headerWrapper'>
         <h1>TaskManager</h1>
 
-        <FontAwesomeIcon icon={faPlus} />
+        <FontAwesomeIcon icon={faPlus} className='headerButton' />
       </div>
     </header>
   )

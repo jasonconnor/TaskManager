@@ -11,7 +11,7 @@ export function Tasks() {
       {showNotification && <Notification />}
 
       {/* Task Form */}
-      {/* <TaskForm /> */}
+      <TaskForm />
 
       {/* Task List */}
       <TaskList />

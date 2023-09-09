@@ -10,6 +10,12 @@ export function TaskList() {
 
   const { setErrorNotification, setSuccessNotification } = useNotification()
 
+  function formatDate(date) {
+    const dateObj = new Date(date)
+
+    return `${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getFullYear()} - ${dateObj.getHours() % 12}:${dateObj.getMinutes()}`
+  }
+
   async function loadTasks() {
     try {
       const tasks = await getTasks()
@@ -48,12 +54,12 @@ export function TaskList() {
       {tasks.map((task) => (
         <div key={task._id} className='taskItem'>
           <div className='taskItemHeader'>
-            <h2 className='taskItemTitle'>{task.title}</h2>
+            <h2 className='taskItemTitle'>{task.title}</h2> 
+            <span className='taskItemDueDate'>Due by: {formatDate(task.dueBy)}</span>
           </div>
 
           <div className='taskItemContent'>
             <p>{task.description}</p>
-            <p>{task.dueDate}</p>
           </div>
 
           <div className='taskItemFooter'>
