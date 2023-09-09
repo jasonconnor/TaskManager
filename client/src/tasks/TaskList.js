@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react'
-
+import { useTasks } from '../tasks/TasksContext'
+import { deleteTask } from './taskServices'
 import { useNotification } from '../notification/NotificationContext'
-import { getTasks, deleteTask } from './taskServices'
 
 import './style.css'
 
 export function TaskList() {
-  const [tasks, setTasks] = useState([])
-
+  const { tasks, loadTasks } = useTasks()
   const { setErrorNotification, setSuccessNotification } = useNotification()
 
   function formatDate(date) {
@@ -16,19 +14,6 @@ export function TaskList() {
     return `${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getFullYear()} - ${dateObj.getHours() % 12}:${dateObj.getMinutes()}`
   }
 
-  async function loadTasks() {
-    try {
-      const tasks = await getTasks()
-
-      setTasks(tasks)
-    }
-
-    catch (error) {
-      console.error(error)
-
-      setErrorNotification('Error loading tasks')
-    }
-  }
 
   async function handleDeleteButtonClick(taskId) {
     try {
@@ -44,10 +29,6 @@ export function TaskList() {
       setErrorNotification('Error deleting task!')
     }
   }
-
-  useEffect(() => {
-    loadTasks()
-  }, [])
 
   return (
     <div className='taskList'>

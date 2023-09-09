@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 
+import { useTasks } from './TasksContext'
 import { createTask } from './taskServices'
 import { useNotification } from '../notification/NotificationContext'
 
@@ -10,6 +11,7 @@ export function TaskForm() {
   const descriptionRef = useRef()
   const dueByRef = useRef()
 
+  const { loadTasks } = useTasks()
   const { setSuccessNotification, setErrorNotification } = useNotification()
 
   async function handleSubmit(event) {
@@ -22,7 +24,8 @@ export function TaskForm() {
     event.preventDefault()
 
     try {
-      const result = await createTask(task)
+      await createTask(task)
+      await loadTasks()
 
       setSuccessNotification('Task created successfully.')
     }

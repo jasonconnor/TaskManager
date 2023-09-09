@@ -4,12 +4,15 @@ import { NotificationProvider } from './notification/NotificationContext'
 import './style.css'
 
 import { Header } from './header/Header'
+import { TasksProvider } from './tasks/TasksContext'
 
 export function App() {
   return (
     <NotificationProvider>
-      <Header />
-      <Tasks />
+      <TasksProvider>
+        <Header />
+        <Tasks />
+      </TasksProvider>
     </NotificationProvider>
   )
 }
