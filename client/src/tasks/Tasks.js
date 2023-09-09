@@ -10,9 +10,6 @@ export function Tasks() {
 
       {showNotification && <Notification />}
 
-      {/* Task Form */}
-      <TaskForm />
-
       {/* Task List */}
       <TaskList />
     </div>
