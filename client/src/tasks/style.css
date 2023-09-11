@@ -1,12 +1,3 @@
-/* Task Wrapper */
-.taskWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-
 /* Task Form */
 .taskFormWrapper {
   display: flex;

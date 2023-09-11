@@ -1,4 +1,5 @@
-import { Header } from './header/Header'
+import { Main } from './common/Main'
+import { Header } from './common/Header'
 import { TaskList } from './tasks/TaskList'
 import { ModalProvider } from './modal/ModalContext'
 import { TasksProvider } from './tasks/TasksContext'
@@ -12,8 +13,12 @@ export function App() {
     <NotificationProvider>
       <TasksProvider>
         <ModalProvider>
+
           <Header />
-          <TaskList />
+          <Main>
+            <TaskList />
+          </Main>
+
         </ModalProvider>
       </TasksProvider>
     </NotificationProvider>

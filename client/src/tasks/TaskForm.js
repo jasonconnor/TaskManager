@@ -2,6 +2,7 @@ import { useRef } from 'react'
 
 import { useTasks } from './TasksContext'
 import { createTask } from './taskServices'
+import { useModal } from '../modal/ModalContext'
 import { useNotification } from '../notification/NotificationContext'
 
 import './style.css'
@@ -11,6 +12,7 @@ export function TaskForm() {
   const descriptionRef = useRef()
   const dueByRef = useRef()
 
+  const { closeModal } = useModal()
   const { loadTasks } = useTasks()
   const { setSuccessNotification, setErrorNotification } = useNotification()
 
@@ -27,6 +29,7 @@ export function TaskForm() {
       await createTask(task)
       await loadTasks()
 
+      closeModal()
       setSuccessNotification('Task created successfully.')
     }
 
