@@ -1,3 +1,11 @@
+import {
+  faTrash,
+  faSquareCheck,
+  faPenToSquare,
+} from '@fortawesome/free-solid-svg-icons'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { useTasks } from '../tasks/TasksContext'
 import { deleteTask } from './taskServices'
 import { Notification } from '../notification/Notification'
@@ -47,14 +55,21 @@ export function TaskList() {
           </div>
 
           <div className='taskItemFooter'>
-            <button className='taskItemButton button-complete'>complete</button>
-            <button className='taskItemButton button-edit'>edit</button>
-            <button
+            <FontAwesomeIcon
+              icon={faSquareCheck}
+              className='taskItemButton button-complete'
+            />
+
+            <FontAwesomeIcon
+              icon={faPenToSquare}
+              className='taskItemButton button-edit'
+            />
+
+            <FontAwesomeIcon
+              icon={faTrash}
               className='taskItemButton button-delete'
               onClick={() => handleDeleteButtonClick(task._id)}
-            >
-              delete
-            </button>
+            />
           </div>
         </div>
       ))}

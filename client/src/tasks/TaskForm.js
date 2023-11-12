@@ -57,18 +57,15 @@ export function TaskForm() {
 
         <div className='taskFormGroup'>
           <label className='taskFormLabel'>Description:</label>
-          <textarea ref={descriptionRef}></textarea>
+          <textarea rows='4' ref={descriptionRef}></textarea>
         </div>
 
         <div className='taskFormGroup'>
-          <label className='taskFormLabel'>Due By:
-          
-            <FontAwesomeIcon icon={faCalendarDays} />
-          </label>
+          <label className='taskFormLabel'>Due By:</label>
           <input type='datetime-local' ref={dueByRef} />
         </div>
 
-        <button>Create</button>
+        <button class='taskFormButton'>Create</button>
       </form>
     </div>
   )
