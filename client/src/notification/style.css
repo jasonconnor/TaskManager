@@ -1,13 +1,25 @@
 .notification {
   background: lightgrey;
   border-left: darkgray 3px solid;
+  border-radius: 2px;
   display: flex;
   flex-direction: row;
+  font-size: 18px;
   justify-content: space-between;
+  margin-bottom: 25px;
+  width: 80%;
+}
+
+.closeNotification {
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.closeNotification:hover {
+  color: red;
 }
 
 .notificationMessage {
-  font-size: 18px;
   padding: 5px 10px;
 }
 

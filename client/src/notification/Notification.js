@@ -1,3 +1,6 @@
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { useNotification } from './NotificationContext'
 
 import './style.css'
@@ -9,7 +12,11 @@ export function Notification() {
     <div className={'notification notification-' + notificationType}>
       <span className='notificationMessage'>{ notificationMessage }</span>
 
-      <button onClick={closeNotification}>close</button>
+      <FontAwesomeIcon
+        icon={faTimes}
+        onClick={closeNotification}
+        className='closeNotification'
+      />
     </div>
   )
 }
