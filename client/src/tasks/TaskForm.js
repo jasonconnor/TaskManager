@@ -1,25 +1,27 @@
 import { useRef } from 'react'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { useTasks } from './TasksContext'
-import { createTask } from './taskServices'
 import { useModal } from '../modal/ModalContext'
+import { createTask } from './taskServices'
 import { useNotification } from '../notification/NotificationContext'
 
 import './style.css'
 
 export function TaskForm() {
   const titleRef = useRef()
-  const descriptionRef = useRef()
   const dueByRef = useRef()
+  const descriptionRef = useRef()
 
-  const { closeModal } = useModal()
   const { loadTasks } = useTasks()
+  const { closeModal } = useModal()
   const { setSuccessNotification, setErrorNotification } = useNotification()
 
   async function handleSubmit(event) {
     const title = titleRef.current.value
-    const description = descriptionRef.current.value
     const dueBy = dueByRef.current.value
+    const description = descriptionRef.current.value
 
     const task = {title, description, dueBy}
 
@@ -59,7 +61,10 @@ export function TaskForm() {
         </div>
 
         <div className='taskFormGroup'>
-          <label className='taskFormLabel'>Due By:</label>
+          <label className='taskFormLabel'>Due By:
+          
+            <FontAwesomeIcon icon={faCalendarDays} />
+          </label>
           <input type='datetime-local' ref={dueByRef} />
         </div>
 

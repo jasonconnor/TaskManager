@@ -1,5 +1,6 @@
 /* Task Form */
 .taskFormWrapper {
+  background: green;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,18 +9,18 @@
 }
 
 .taskForm {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 540px;
 }
 
 .taskFormGroup {
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 270px;
   margin-bottom: 10px;
+  width: 270px;
 }
 
 .taskFormLabel {
@@ -30,9 +31,9 @@
 
 /* Task List */
 .taskList {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 720px;
 }
 
@@ -41,17 +42,16 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 500px;
   margin-bottom: 10px;
   padding: 20px 30px;
+  width: 500px;
 }
 
 .taskItemHeader {
-  align-items: center;
   align-items: flex-start;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -60,9 +60,9 @@
 }
 
 .taskItemDueDate {
-  padding: 0 10px;
   font-size: 14px;
   margin-bottom: 10px;
+  padding: 0 10px;
 }
 
 .taskItemContent {
@@ -103,8 +103,8 @@
 }
 
 .button-delete {
-  border: 1px solid red;
   background: none;
+  border: 1px solid red;
   color: red;
 }
 

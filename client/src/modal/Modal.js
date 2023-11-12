@@ -12,7 +12,10 @@ export function Modal({ children }) {
     <div className='modalOverlay'>
       <div className='modalContainer'>
         <FontAwesomeIcon icon={faClose} onClick={closeModal} className='closeModalButton' />
-        { children }
+
+        <div className='modalWrapper'>
+          { children }
+        </div>
       </div>
     </div>
   )

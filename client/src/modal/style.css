@@ -10,15 +10,30 @@
   left: 0;
 }
 
+.closeModalButton {
+  color: red;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .modalContainer {
-  background: white;
+  align-items: center;
+  background: teal;
   border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 50%;
   height: 50%;
   position: fixed;
 }
 
-.closeModalButton {
-  color: red;
-  cursor: pointer;
+.modalWrapper {
+  background: pink;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
 }
