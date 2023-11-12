@@ -1,6 +1,12 @@
 import { Router } from 'express'
 
-import { find, findOne, create, remove } from './task.controller.js'
+import { 
+  find,
+  create,
+  remove,
+  findOne,
+  complete
+} from './task.controller.js'
 
 export const TaskRouter = Router()
 
@@ -14,7 +20,7 @@ TaskRouter.post('/', create)
 
 
 // PUT Routes
-
+TaskRouter.put('/:id/complete', complete)
 
 // DELETE Routes
 TaskRouter.delete('/:id', remove)

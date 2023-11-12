@@ -27,3 +27,12 @@ export async function deleteTask(id) {
 
   return data
 }
+
+export async function completeTask(id) {
+  const response = await fetch(`http://localhost:4000/tasks/${id}/complete`, {
+    method: 'PUT',
+  })
+  const data = await response.json()
+
+  return data
+}

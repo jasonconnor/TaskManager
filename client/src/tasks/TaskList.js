@@ -7,9 +7,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { useTasks } from '../tasks/TasksContext'
-import { deleteTask } from './taskServices'
 import { Notification } from '../notification/Notification'
 import { useNotification } from '../notification/NotificationContext'
+import { deleteTask, completeTask } from './taskServices'
 
 import './style.css'
 
@@ -21,6 +21,21 @@ export function TaskList() {
     const dateObj = new Date(date)
 
     return `${dateObj.getMonth() + 1}/${dateObj.getDate()}/${dateObj.getFullYear()} - ${dateObj.getHours() % 12}:${dateObj.getMinutes()}`
+  }
+
+  async function handleCompleteButtonClick(taskId) {
+    try {
+      await completeTask(taskId)
+      await loadTasks()
+
+      setSuccessNotification('Task completed!')
+    }
+    
+    catch (error) {
+      console.error(error)
+
+      setErrorNotification('Error completing task!')
+    }
   }
 
   async function handleDeleteButtonClick(taskId) {
@@ -57,6 +72,7 @@ export function TaskList() {
           <div className='taskItemFooter'>
             <FontAwesomeIcon
               icon={faSquareCheck}
+              onClick={() => handleCompleteButtonClick(task._id)}
               className='taskItemButton button-complete'
             />
 

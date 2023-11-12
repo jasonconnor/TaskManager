@@ -19,6 +19,12 @@ export async function createTask(title, description, dueBy) {
   return result
 }
 
+export async function completeTask(id) {
+  const task = await TaskModel.findByIdAndUpdate(id, {completed: true}, {new: true})
+
+  return task
+}
+
 export async function deleteTask(id) {
   const task = await TaskModel.findByIdAndDelete(id)
 
