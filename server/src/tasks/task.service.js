@@ -1,5 +1,6 @@
 import { TaskModel } from './task.model.js'
 
+// Depreciated
 export async function getAllTasks() {
   const tasks = await TaskModel.find().sort({dueBy: 1})
   
@@ -12,6 +13,18 @@ export async function getTaskById(id) {
   return task
 }
 
+export async function getCompletedTasks() {
+  const tasks = await TaskModel.find({complete: true})
+
+  return tasks
+}
+
+export async function getIncompleteTasks() {
+  const tasks = await TaskModel.find({complete: false})
+
+  return tasks
+}
+
 export async function createTask(title, description, dueBy) {
   const task = new TaskModel({title, description, dueBy})
   const result = await task.save()
@@ -20,7 +33,7 @@ export async function createTask(title, description, dueBy) {
 }
 
 export async function completeTask(id) {
-  const task = await TaskModel.findByIdAndUpdate(id, {completed: true}, {new: true})
+  const task = await TaskModel.findByIdAndUpdate(id, {complete: true}, {new: true})
 
   return task
 }

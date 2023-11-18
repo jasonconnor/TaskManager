@@ -1,5 +1,5 @@
-export async function getTasks() {
-  const response = await fetch('http://localhost:4000/tasks')
+export async function getTasks(status) {
+  const response = await fetch(`http://localhost:4000/tasks?complete=${status}`)
   const data = await response.json()
 
   return data

@@ -3,7 +3,10 @@ import mongoose from 'mongoose'
 const TaskSchema = new mongoose.Schema({
   title: String,
   description: String,
-  complete: Boolean,
+  complete: {
+    type: Boolean,
+    default: false
+  },
   dueBy: Date,
   createdAt: {
     type: Date,

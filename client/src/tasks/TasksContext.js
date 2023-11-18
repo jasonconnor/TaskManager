@@ -16,15 +16,26 @@ export function useTasks() {
 }
 
 export function TasksProvider({ children }) {
-  const [tasks, setTasks] = useState([])
+  const [showComplete, setShowComplete] = useState(false)
+  const [completedTasks, setCompletedTasks] = useState([])
+  const [incompleteTasks, setIncompleteTasks] = useState([])
 
   const { setErrorNotification } = useNotification()
+
+  const toggleShowComplete = () => setShowComplete(!showComplete)
 
   const loadTasks = useCallback(async () => {
     try {
       const tasks = await getTasks()
 
-      setTasks(tasks)
+      const completedTaskData = tasks.filter(task => task.complete)
+      const incompleteTaskData = tasks.filter(task => !task.complete)
+
+      console.log(completedTaskData)
+      console.log(incompleteTaskData)
+
+      setCompletedTasks(completedTaskData)
+      setIncompleteTasks(incompleteTaskData)
     }
 
     catch (error) {
@@ -39,7 +50,13 @@ export function TasksProvider({ children }) {
   }, [loadTasks])
 
   return (
-    <TasksContext.Provider value={{tasks, loadTasks}}>
+    <TasksContext.Provider value={{
+      loadTasks,
+      showComplete,
+      completedTasks,
+      incompleteTasks,
+      toggleShowComplete
+    }}>
       {children}
     </TasksContext.Provider>
   )

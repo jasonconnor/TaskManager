@@ -14,8 +14,21 @@ import { deleteTask, completeTask } from './taskServices'
 import './style.css'
 
 export function TaskList() {
-  const { tasks, loadTasks } = useTasks()
-  const { showNotification, setErrorNotification, setSuccessNotification } = useNotification()
+  const {
+    showNotification,
+    setErrorNotification,
+    setSuccessNotification
+  } = useNotification()
+
+  const { 
+    loadTasks,
+    showComplete, 
+    completedTasks, 
+    incompleteTasks, 
+    toggleShowComplete,
+  } = useTasks()
+
+  const tasks = showComplete ? completedTasks : incompleteTasks
 
   function formatDate(date) {
     const dateObj = new Date(date)
@@ -57,6 +70,17 @@ export function TaskList() {
     <div className='taskList'>
 
       { showNotification && <Notification />}
+
+      <div className='taskSwitchContainer'>
+        <span>Incomplete Tasks</span>
+
+        <label className='taskSwitch' htmlFor='showComplete'>
+          <input type='checkbox' id='showComplete' name='showComplete' onChange={() => toggleShowComplete()}/>
+          <span className='taskSwitchSlider'></span>
+        </label>
+
+        <span>Complete Tasks</span>
+      </div>
 
       {tasks.map((task) => (
         <div key={task._id} className='taskItem'>
